@@ -1,13 +1,15 @@
 package Bencher::Scenario::INIParsingModules;
 
-# DATE
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
 
 use File::ShareDir::Tarball qw(dist_dir);
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 our $scenario = {
     summary => 'Benchmark INI parsing modules',
@@ -31,6 +33,10 @@ our $scenario = {
         {
             module => 'Config::Simple::Conf',
             code_template => 'Config::Simple::Conf->new(<filename>)',
+        },
+        {
+            module => 'Config::INI::Tiny',
+            code_template => 'Config::INI::Tiny->new->to_hash(do { local $/; open my $fh, "<", <filename> or die; scalar readline($fh) } )',
         },
     ],
 
