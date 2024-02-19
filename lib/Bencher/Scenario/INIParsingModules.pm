@@ -38,6 +38,10 @@ our $scenario = {
             module => 'Config::INI::Tiny',
             code_template => 'state $cfg = Config::INI::Tiny->new; $cfg->to_hash(do { local $/; open my $fh, "<", <filename> or die; scalar readline($fh) } )',
         },
+        {
+            module => 'Config::Tiny',
+            code_template => 'Config::Tiny->read(<filename>)',
+        },
     ],
 
     datasets => [
